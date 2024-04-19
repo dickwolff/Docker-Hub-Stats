@@ -1,12 +1,15 @@
+import prismadb from '@/lib/prismadb';
 import type { NextRequest } from 'next/server';
  
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization');
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (authHeader !== `Bearer ${process.env.APP_SECRET}`) {
     return new Response('Unauthorized', {
       status: 401,
     });
   }
  
-  return Response.json({ success: true });
+  const pullData = await prismadb.pullData.findMany();
+
+  return Response.json({ success: true, data: pullData });
 }
