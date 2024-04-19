@@ -11,9 +11,18 @@ export default async function Home() {
   const pullsAccumulatedDict: { [key: string]: number } = {}
   pullData.forEach((element) => {
     const dictKey = moment(element.date).format("YYYY-MM-DD");
-    pullsAccumulatedDict[dictKey] = element.pullsToday;
+    pullsAccumulatedDict[dictKey] = element.pullsTotal;
   });
   const pullsAccumulated = summarizePullsByDay(pullsAccumulatedDict);
+
+  
+  const pullsUniqueDict: { [key: string]: number } = {}
+  pullData.forEach((element) => {
+    const dictKey = moment(element.date).format("YYYY-MM-DD");
+    pullsUniqueDict[dictKey] = element.pullsToday;
+  });
+  const pullsUnique = summarizePullsByDay(pullsUniqueDict);
+
 
   const pullsChartParams = {
     chartName: "Total pulls",
@@ -22,10 +31,10 @@ export default async function Home() {
       tooltipText: "Until today",
       data: pullsAccumulated
     },
-    // secondarySeries: {
-    //   tooltipText: "Unique",
-    //   data: uniqueClicksThisWeek
-    // }
+    secondarySeries: {
+      tooltipText: "Unique",
+      data: pullsUnique
+    }
   };
 
 
