@@ -5,7 +5,7 @@ import moment from "moment";
 export default async function Home() {
 
   const pullData = await prismadb.pullData.findMany();
-
+  console.log(`Retrieved ${pullData.length} record(s)`);
   const totalPullCount = pullData.length === 0 ? 0 : pullData[pullData.length - 1].pullsTotal;
   const pullsAccumulated = getAccumulatedPulls();
   const pullsUnique = getUniquePulls();
