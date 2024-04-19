@@ -38,8 +38,8 @@ export default async function Home() {
   );
 
   function getAccumulatedPulls() {
-
     const pullsAccumulatedDict: { [key: string]: number; } = {};
+    
     pullData.forEach((element) => {
       const dictKey = moment(element.date).format("YYYY-MM-DD");
       pullsAccumulatedDict[dictKey] = element.pullsTotal;
@@ -51,16 +51,17 @@ export default async function Home() {
   
   function getUniquePulls() {
     const pullsUniqueDict: { [key: string]: number; } = {};
+    
     pullData.forEach((element) => {
       const dictKey = moment(element.date).format("YYYY-MM-DD");
       pullsUniqueDict[dictKey] = element.pullsToday;
     });
+    
     const pullsUnique = summarizeByDay(pullsUniqueDict);
     return pullsUnique;
   }
   
   function summarizeByDay(pullsByDate: any) {
-
     const pullsByDateGapsFilled = fillDataGaps(pullsByDate);
 
     // Do some data processing: count the pulls.   
@@ -68,6 +69,7 @@ export default async function Home() {
       const value = pullsByDateGapsFilled[key];
       pullsByDateGapsFilled[key] = parseFloat(value);
     }
+
     return pullsByDateGapsFilled;
   }
 
