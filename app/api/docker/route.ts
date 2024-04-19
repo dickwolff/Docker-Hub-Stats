@@ -16,21 +16,25 @@ export async function GET(request: NextRequest) {
     // Get the last entry for known pull data (so yesterday).
     const lastEntries = await prismadb.pullData.findMany({
         orderBy: {
-            id: 'desc',
+            date: 'desc',
         },
         take: 1
     });
-    
+
     // Get the pull count (or 0 if none present).
     var lastPullCount = lastEntries.length === 0 ? 0 : lastEntries[0].pullsTotal;
 
     // Add todays pull count.
-    prismadb.pullData.create({
-        data: {
-            pullsToday: dockerData.pull_count,
-            pullsTotal: lastPullCount += dockerData.pull_count
-        }
+    const newData = {
+        pullsToday: dockerData.pull_count,
+        pullsTotal: lastPullCount += dockerData.pull_count
+    }
+
+    // Add entry to database.
+    await prismadb.pullData.create({
+        data: newData
     });
 
-    return Response.json({ success: true });
+    // Return 200 with new pull data.
+    return Response.json({ success: true, data: newData });
 }

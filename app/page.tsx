@@ -14,7 +14,6 @@ export default async function Home() {
     pullsAccumulatedDict[dictKey] = element.pullsTotal;
   });
   const pullsAccumulated = summarizePullsByDay(pullsAccumulatedDict);
-
   
   const pullsUniqueDict: { [key: string]: number } = {}
   pullData.forEach((element) => {
@@ -22,7 +21,6 @@ export default async function Home() {
     pullsUniqueDict[dictKey] = element.pullsToday;
   });
   const pullsUnique = summarizePullsByDay(pullsUniqueDict);
-
 
   const pullsChartParams = {
     chartName: "Total pulls",
