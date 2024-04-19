@@ -1,5 +1,8 @@
 import prismadb from '@/lib/prismadb';
+import moment from 'moment';
+import "moment/locale/nl";
 import type { NextRequest } from 'next/server';
+import TelegramBot from 'node-telegram-bot-api';
 
 export async function GET(request: NextRequest) {
     const authHeader = request.headers.get('authorization');
@@ -34,6 +37,12 @@ export async function GET(request: NextRequest) {
     await prismadb.pullData.create({
         data: newData
     });
+
+    const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, { polling: false });
+    await bot.sendMessage(process
+        .env.TELEGRAM_BOT_CHAT_ID!, 
+        `${moment().format("dddd D MMMM YYYY")}\n\nVandaag: ${newData.pullsToday}\nTotaal: ${newData.pullsTotal}`,
+        { parse_mode: 'MarkdownV2' });
 
     // Return 200 with new pull data.
     return Response.json({ success: true, data: newData });
