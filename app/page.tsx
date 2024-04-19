@@ -7,26 +7,14 @@ export default async function Home() {
   const pullData = await prismadb.pullData.findMany();
 
   const totalPullCount = pullData.length === 0 ? 0 : pullData[pullData.length - 1].pullsTotal;
-
-  const pullsAccumulatedDict: { [key: string]: number } = {}
-  pullData.forEach((element) => {
-    const dictKey = moment(element.date).format("YYYY-MM-DD");
-    pullsAccumulatedDict[dictKey] = element.pullsTotal;
-  });
-  const pullsAccumulated = summarizePullsByDay(pullsAccumulatedDict);
-  
-  const pullsUniqueDict: { [key: string]: number } = {}
-  pullData.forEach((element) => {
-    const dictKey = moment(element.date).format("YYYY-MM-DD");
-    pullsUniqueDict[dictKey] = element.pullsToday;
-  });
-  const pullsUnique = summarizePullsByDay(pullsUniqueDict);
+  const pullsAccumulated = getAccumulatedPulls();
+  const pullsUnique = getUniquePulls();
 
   const pullsChartParams = {
     chartName: "Total pulls",
     chartValue: totalPullCount,
     primarySeries: {
-      tooltipText: "Until today",
+      tooltipText: "Accumulated",
       data: pullsAccumulated
     },
     secondarySeries: {
@@ -35,14 +23,13 @@ export default async function Home() {
     }
   };
 
-
   return (
     <div className="w-full flex justify-center">
-      <div className="max-w-screen-lg p-4">
+      <div className="w-full max-w-screen-lg p-4">
         <h1 className="text-2xl pb-4 overflow-hidden text-ellipsis">Analytics</h1>
 
-        <div className="w-full flex flex-col sm:flex-row">
-          <div className="w-full flex flex-row sm:max-w-lg p-2 justify-center">
+        <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-row p-2 justify-center">
             <ChartComponent params={pullsChartParams} />
           </div>
         </div>
@@ -50,7 +37,29 @@ export default async function Home() {
     </div>
   );
 
-  function summarizePullsByDay(pullsByDate: any) {
+  function getAccumulatedPulls() {
+
+    const pullsAccumulatedDict: { [key: string]: number; } = {};
+    pullData.forEach((element) => {
+      const dictKey = moment(element.date).format("YYYY-MM-DD");
+      pullsAccumulatedDict[dictKey] = element.pullsTotal;
+    });
+
+    const pullsAccumulated = summarizeByDay(pullsAccumulatedDict);
+    return pullsAccumulated;
+  }
+  
+  function getUniquePulls() {
+    const pullsUniqueDict: { [key: string]: number; } = {};
+    pullData.forEach((element) => {
+      const dictKey = moment(element.date).format("YYYY-MM-DD");
+      pullsUniqueDict[dictKey] = element.pullsToday;
+    });
+    const pullsUnique = summarizeByDay(pullsUniqueDict);
+    return pullsUnique;
+  }
+  
+  function summarizeByDay(pullsByDate: any) {
 
     const pullsByDateGapsFilled = fillDataGaps(pullsByDate);
 
@@ -61,7 +70,6 @@ export default async function Home() {
     }
     return pullsByDateGapsFilled;
   }
-
 
   function fillDataGaps(data: any) {
 

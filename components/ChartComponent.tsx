@@ -28,36 +28,36 @@ const ChartComponent = ({ params }: { params: ChartComponentOptions }) => {
         primaryLineValues.push(element);
     });
 
-    // Calculate total value (for top of chart).
-    const totalValues = primaryLineValues.reduce((a, b) => a + b, 0);
-
     const option: ApexOptions = {
         chart: {
-            id: "clicks-7d",
+            id: "pulls-7d",
             type: "area",
             height: "100%",
             width: "100%",
             toolbar: {
                 show: false
-            }
+            },
+            background: "#000"
         },
+        colors: ["#0a3791", "#0a7041"],
         tooltip: {
             enabled: true,
             x: {
                 show: false
-            }
+            },
+            theme: "dark" 
         },
         fill: {
             type: "gradient",
             gradient: {
                 opacityFrom: 0.55,
                 opacityTo: 0,
-                shade: "#1c64f2",
-                gradientToColors: ["#1c64f2"]
+                shade: "#0a3791",
+                gradientToColors: ["#0a3791"]
             }
         },
         dataLabels: {
-            enabled: false
+            enabled: false,
         },
         stroke: {
             width: 4
@@ -82,7 +82,7 @@ const ChartComponent = ({ params }: { params: ChartComponentOptions }) => {
             show: false,
             labels: {
                 formatter(val, _) {
-                    return val.toFixed(0);
+                    return val.toFixed(0)
                 },
             }
         },
@@ -112,10 +112,10 @@ const ChartComponent = ({ params }: { params: ChartComponentOptions }) => {
     }
 
     return (
-        <div className="max-w-sm w-full">
+        <div className="w-full">
             <Suspense fallback={<Loader2 className="w-6 h-6 animate-spin" />}>
                 <div>
-                    <h5 className="leading-none text-3xl font-bold text-gray-900 pb-2">{params.chartValue}</h5>
+                    <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-slate-200 pb-2">{params.chartValue}</h5>
                     <p className="text-base font-normal text-gray-500 dark:text-gray-400">{params.chartName}</p>
                 </div>
                 <ApexCharts type="area" options={option} series={series} />
