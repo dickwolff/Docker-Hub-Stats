@@ -25,12 +25,12 @@ export async function GET(request: NextRequest) {
     });
 
     // Get the pull count (or 0 if none present).
-    var lastPullCount = lastEntries.length === 0 ? 0 : lastEntries[0].pullsTotal;
+    var lastTotalPullCount = lastEntries.length === 0 ? 0 : lastEntries[0].pullsTotal;
 
     // Add todays pull count.
     const newData = {
-        pullsToday: dockerData.pull_count,
-        pullsTotal: lastPullCount += dockerData.pull_count
+        pullsToday: dockerData.pull_count - lastTotalPullCount,
+        pullsTotal: dockerData.pull_count
     }
 
     // Add entry to database.
