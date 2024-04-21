@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get the stats from Docker hub.
-    const dockerResponse = await fetch("https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio");
+    const dockerResponse = await fetch("https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio", { next: { revalidate: 1 } });
     const dockerData = await dockerResponse.json();
 
     // Get the last entry for known pull data (so yesterday).

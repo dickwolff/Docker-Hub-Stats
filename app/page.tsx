@@ -64,7 +64,6 @@ export default async function Home() {
   function summarizeByDay(pullsByDate: any) {
     const pullsByDateGapsFilled = fillDataGaps(pullsByDate);
 
-    // Do some data processing: count the pulls.   
     for (let key in pullsByDateGapsFilled) {
       const value = pullsByDateGapsFilled[key];
       pullsByDateGapsFilled[key] = parseFloat(value);
