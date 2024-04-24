@@ -11,8 +11,8 @@
     "vercel-build": "prisma migrate deploy && next build"
   },
   "dependencies": {
-    "@prisma/client": "^5.12.1",
-    "apexcharts": "^3.48.0",
+    "@prisma/client": "^5.13.0",
+    "apexcharts": "^3.49.0",
     "axios": "^1.6.8",
     "lucide-react": "^0.372.0",
     "moment": "^2.30.1",
