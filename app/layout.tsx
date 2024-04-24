@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Export to Ghostfolio – Docker Pull Stats",
-  description: "Export to Ghostfolio - Docker Pull Stats",
+  title: `${process.env.APP_NAME} – Docker Pull Stats`,
+  description: `${process.env.APP_NAME} - Docker Pull Stats`,
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
-import prismadb from '@/lib/prismadb';
-import moment from 'moment';
 import "moment/locale/nl";
+import moment from 'moment';
+import prismadb from '@/lib/prismadb';
 import type { NextRequest } from 'next/server';
 import TelegramBot from 'node-telegram-bot-api';
 
@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get the stats from Docker hub.
-    const dockerResponse = await fetch("https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio", { cache: "no-cache" });
+    const dockerResponse = await fetch(process.env.DOCKER_ENDPOINT!, { cache: "no-cache" });
     const dockerData = await dockerResponse.json();
 
     // Get the last entry for known pull data (so yesterday).

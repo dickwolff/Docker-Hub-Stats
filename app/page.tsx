@@ -28,7 +28,7 @@ export default async function Home() {
   return (
     <div className="w-full flex justify-center">
       <div className="w-full max-w-screen-lg p-4">
-        <h1 className="text-2xl pb-4 overflow-hidden text-ellipsis">Analytics</h1>
+        <h1 className="text-2xl pb-4 overflow-hidden text-ellipsis">{process.env.APP_NAME}</h1>
 
         <div className="w-full flex flex-col items-center">
           <div className="w-full flex flex-row p-2 justify-center">
