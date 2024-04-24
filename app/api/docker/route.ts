@@ -38,11 +38,17 @@ export async function GET(request: NextRequest) {
         data: newData
     });
 
-    const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, { polling: false });
-    await bot.sendMessage(process
-        .env.TELEGRAM_BOT_CHAT_ID!,
-        `${moment().format("dddd D MMMM YYYY")}\n\nVandaag: ${newData.pullsToday}\nTotaal: ${newData.pullsTotal}\n\n[Ga naar statistieken](https://export-to-ghostfolio-stats.vercel.app)`,
-        { parse_mode: 'MarkdownV2', disable_web_page_preview: true });
+    // Get Telegram bot config. If given, also send the update to Telegram.
+    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+    const telegramChatId = process.env.TELEGRAM_BOT_CHAT_ID;
+
+    if (telegramBotToken && telegramChatId) {
+        const bot = new TelegramBot(telegramBotToken, { polling: false });
+        await bot.sendMessage(
+            telegramChatId,
+            `${moment().format("dddd D MMMM YYYY")}\n\nVandaag: ${newData.pullsToday}\nTotaal: ${newData.pullsTotal}\n\n[Ga naar statistieken](https://export-to-ghostfolio-stats.vercel.app)`,
+            { parse_mode: 'MarkdownV2', disable_web_page_preview: true });
+    }
 
     // Return 200 with new pull data.
     return Response.json({ success: true, data: newData });
