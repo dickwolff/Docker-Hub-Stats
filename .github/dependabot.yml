@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    labels:     
+      - "Dependencies"
+    groups:
+      dependencies:
+        dependency-type: "production"
+        patterns:
+          - "*"
+      dev-dependencies:
+        dependency-type: "development"
+        patterns:
+          - "*"
