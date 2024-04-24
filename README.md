@@ -2,14 +2,15 @@ A simple webapp that pulls statistics from Docker Hub every night.
 
 ## Tech stack
 
-- Next.js for the webapp/api
-- Vercel for hosting the app and the PostgreSQL database
+- [Next.js](https://nextjs.org/) for the webapp/api
+- [Vercel](https://vercel.com/) for hosting the app and the PostgreSQL database
 
 ## How to deploy
 
 1. Fork this repository.
 2. Go to Vercel and click on 'Add new project' and import the repository from Git
 3. Enter the ENV variables listed in the table below
+4. After creating your project, go to 'Storage' and click 'Create Database' (use Postgres). 
 
 ### Variables
 | Variable | Description | Required (y/n) |
