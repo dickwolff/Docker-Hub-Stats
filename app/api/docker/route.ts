@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get the stats from Docker hub.
-    const dockerResponse = await fetch("https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio", { next: { revalidate: 1 } });
+    const dockerResponse = await fetch("https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio", { cache: "no-cache" });
     const dockerData = await dockerResponse.json();
 
     // Get the last entry for known pull data (so yesterday).
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
 
     const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, { polling: false });
     await bot.sendMessage(process
-        .env.TELEGRAM_BOT_CHAT_ID!, 
+        .env.TELEGRAM_BOT_CHAT_ID!,
         `${moment().format("dddd D MMMM YYYY")}\n\nVandaag: ${newData.pullsToday}\nTotaal: ${newData.pullsTotal}\n\n[Ga naar statistieken](https://export-to-ghostfolio-stats.vercel.app)`,
         { parse_mode: 'MarkdownV2', disable_web_page_preview: true });
 
