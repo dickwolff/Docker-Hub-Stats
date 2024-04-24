@@ -1,6 +1,8 @@
-import ChartComponent from "@/components/ChartComponent";
-import prismadb from "@/lib/prismadb";
 import moment from "moment";
+import prismadb from "@/lib/prismadb";
+import ChartComponent from "@/components/ChartComponent";
+
+export const revalidate = 0;
 
 export default async function Home() {
 
