@@ -12,11 +12,11 @@ interface ChartComponentOptions {
     chartValue: number;
     primarySeries: {
         tooltipText: string,
-        data: { [key: string]: any[] }
+        data: { [key: string]: Number }
     };
     secondarySeries?: {
         tooltipText: string,
-        data: { [key: string]: any[] }
+        data: { [key: string]: Number }
     };
 }
 
