@@ -27,14 +27,24 @@ export default async function Home() {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full max-w-screen-lg p-4">
-        <h1 className="text-2xl pb-4 overflow-hidden text-ellipsis">{process.env.APP_NAME}</h1>
+      <div className="w-full max-w-screen-lg p-4 flex-row">
 
-        <div className="w-full flex flex-col items-center">
-          <div className="w-full flex flex-row p-2 justify-center">
+        <div className="flex flex-row justify-center">
+          <div className="block max-w-sm p-6 border border-gray-200">
+            <h1 className="text-2xl pb-4 overflow-hidden text-ellipsis">{process.env.APP_NAME}</h1>
+
+            <div className="grid grid-cols-3 mt-4">
+              <div className="col-span-2">Stars:</div>
+              <div>1</div>
+            </div>
+
+          </div>
+
+          <div className="flex flex-row p-2 justify-center">
             <ChartComponent params={pullsChartParams} />
           </div>
         </div>
+
       </div>
     </div>
   );
@@ -78,7 +88,7 @@ export default async function Home() {
 
     // Get the keys as categories.
     let categories = Object.keys(data) || [];
-    console.log("before", categories);
+
     // Generate up to 7 days as categories, if there isn't 7 days of data.
     for (let day = 6; day >= 0; day--) {
       const date = moment().subtract(day, 'days').format("YYYY-MM-DD");
@@ -87,7 +97,7 @@ export default async function Home() {
       }
     }
     categories = categories.sort();
-    console.log("after", categories);
+
     // Fill gaps for dates without values.
     Object.values(categories).forEach(date => {
       if (!(date in data)) {
