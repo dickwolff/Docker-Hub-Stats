@@ -12,6 +12,12 @@ A simple webapp that pulls statistics from Docker Hub every night.
 
 ## How to deploy
 
+### One click deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdickwolff%2FDocker-Pull-Stats&env=CRON_SECRET,DOCKER_ENDPOINT,APP_NAME&project-name=docker-pull-stats)
+
+### Manual deployment
+
 1. Fork this repository.
 2. Go to Vercel and click on 'Add new project' and import the repository from Git
 3. Enter the ENV variables listed in the table below
