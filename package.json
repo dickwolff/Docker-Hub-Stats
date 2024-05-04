@@ -14,7 +14,7 @@
     "@prisma/client": "^5.13.0",
     "apexcharts": "^3.49.0",
     "axios": "^1.6.8",
-    "lucide-react": "^0.377.0",
+    "lucide-react": "^0.378.0",
     "moment": "^2.30.1",
     "next": "14.2.3",
     "node-telegram-bot-api": "^0.65.1",
