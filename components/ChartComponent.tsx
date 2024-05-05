@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
+import { useTheme } from "next-themes";
 
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -19,6 +20,11 @@ interface ChartComponentOptions {
 }
 
 export default function ChartComponent({ params }: { params: ChartComponentOptions }) {
+    const { theme } = useTheme();
+
+    const isDarkTheme = theme === "dark";
+    const lightLineColors = ["#008ffb", "#00e396"];
+    const darkLineColors = ["#0a3791", "#0a7041"];
 
     // Retrieve line values.
     const primaryLineValues: any[] = [];
@@ -35,9 +41,9 @@ export default function ChartComponent({ params }: { params: ChartComponentOptio
             toolbar: {
                 show: false
             },
-            background: "#000"
+            background: isDarkTheme ? "#020817" : "#fff"
         },
-        colors: ["#0a3791", "#0a7041"],
+        colors: isDarkTheme ? darkLineColors : lightLineColors,
         tooltip: {
             enabled: true,
             x: {
@@ -50,8 +56,8 @@ export default function ChartComponent({ params }: { params: ChartComponentOptio
             gradient: {
                 opacityFrom: 0.55,
                 opacityTo: 0,
-                shade: "#0a3791",
-                gradientToColors: ["#0a3791"]
+                shade: isDarkTheme ? "#0a3791" : "008ffb",
+                gradientToColors: [isDarkTheme ? "#0a3791" : "008ffb"]
             }
         },
         dataLabels: {
