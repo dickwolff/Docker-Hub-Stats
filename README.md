@@ -18,10 +18,11 @@ A simple webapp that pulls statistics from Docker Hub every night.
 
 ### Manual deployment
 
-1. Fork this repository.
+1. Fork this repository
 2. Go to Vercel and click on 'Add new project' and import the repository from Git
 3. Enter the ENV variables listed in the table below
-4. After creating your project, go to 'Storage' and click 'Create Database' (use Postgres). 
+4. After creating your project, go to 'Storage' and click 'Create Database' (use Postgres)
+5. Redeploy the app from Vercel (as the newly added environment variables aren't propagated yet)
 
 ### Variables
 | Variable | Description | Required (y/n) |
