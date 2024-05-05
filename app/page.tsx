@@ -1,15 +1,14 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { Container, Loader2 } from "lucide-react";
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import ChartComponent from "@/components/ChartComponent";
-
-import { getPullData } from "@/actions/getPullData";
-import { getHubData } from "@/actions/getHubData";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ModeToggle } from "@/components/togglemode";
 import { Menu } from "@/components/menu";
+import { Button } from "@/components/ui/button";
+import ChartComponent from "@/components/ChartComponent";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+
+import { getHubData } from "@/actions/getHubData";
+import { getPullData } from "@/actions/getPullData";
 
 export const revalidate = 0;
 
