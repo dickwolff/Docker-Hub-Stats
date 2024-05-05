@@ -2,15 +2,46 @@ import moment from "moment";
 import prismadb from "@/lib/prismadb";
 import { PullData } from "@prisma/client";
 
-export async function getPullData(): Promise<[number, { [key: string]: number }, { [key: string]: number }]> {
+export async function getPullData(totalPullCountToday?: number): Promise<[number, { [key: string]: number }, { [key: string]: number }]> {
 
-    const pullData = await prismadb.pullData.findMany({ orderBy: { date: 'asc' } });
+    let pullData = await prismadb.pullData.findMany({ orderBy: { date: 'asc' } });
 
-    const totalPullCount = pullData.length === 0 ? 0 : pullData[pullData.length - 1].pullsTotal;
+    // When pullCountToday was provided, try and replace the value in the data retrieved from the database.
+    if (totalPullCountToday) {
+        pullData = insertLivePullCount(pullData, totalPullCountToday);
+    }
+
+    const totalPullCount = totalPullCountToday ? totalPullCountToday : (pullData.length === 0 ? 0 : pullData[pullData.length - 1].pullsTotal);
     const pullsAccumulated = getAccumulatedPulls(pullData);
     const pullsUnique = getUniquePulls(pullData);
 
+
     return [totalPullCount, pullsAccumulated, pullsUnique]
+}
+
+function insertLivePullCount(pullData: PullData[], totalPullCountToday: number): PullData[] {
+
+    // Look if there is a value for today. If so, overwrite the total pull count by the given value.
+    const pullDataTodayIndex = pullData.findIndex(pd => moment(pd.date).format("YYYY-MM-DD") == moment(new Date()).format("YYYY-MM-DD"));
+    if (pullDataTodayIndex >= 0) {
+        pullData[pullDataTodayIndex].pullsTotal = totalPullCountToday!;
+    }
+    else {
+
+        // Add a new entry for today
+        pullData.push({
+            date: new Date(),
+            pullsToday: 0,
+            pullsTotal: totalPullCountToday,
+            id: moment().date().toString()
+        });
+    }
+
+    // Calculate the difference between yesterday and today.
+    const previousDayIndex = pullDataTodayIndex > 0 ? pullDataTodayIndex - 1 : 0;
+    pullData[pullDataTodayIndex].pullsToday = totalPullCountToday - pullData[previousDayIndex].pullsTotal;
+
+    return pullData;
 }
 
 function getAccumulatedPulls(pullData: PullData[]) {
