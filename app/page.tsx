@@ -8,6 +8,10 @@ import { getPullData } from "@/actions/getPullData";
 import { getHubData } from "@/actions/getHubData";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ModeToggle } from "@/components/togglemode";
+import { Menu } from "@/components/menu";
+// import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
+
 
 export const revalidate = 0;
 
@@ -30,16 +34,23 @@ export default async function Home() {
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-full max-w-screen-lg p-4 flex-row">
+    <div className="w-full flex justify-center flex-col">
 
-        <div className="flex flex-col sm:flex-row justify-center">
+      <header className="flex w-full">
+        <div className="container flex h-14 max-w-screen-2xl items-center frow">
+          <Link href="/" className="space-x-2 flex text-xl">
+            {process.env.APP_NAME}
+          </Link>
+          <Menu />
+        </div>
+      </header>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{process.env.APP_NAME}</CardTitle>
-            </CardHeader>
-            <CardContent>
+      <div className="w-full p-4 flex-row">
+
+        <div className="flex flex-col sm:flex-row justify-center max-w-screen-2xl">
+
+          <Card className="mb-4">
+            <CardContent className="mt-6">
               <div className="grid grid-cols-3">
                 <div className="col-span-2">User:</div>
                 <div>{hubData.user}</div>
@@ -70,7 +81,7 @@ export default async function Home() {
         </div>
 
       </div>
-    </div>
+    </div >
   );
 
 
