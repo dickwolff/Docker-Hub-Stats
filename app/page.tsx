@@ -63,7 +63,7 @@ export default async function Home() {
               </div>
             </CardContent>
             <CardFooter>
-              <Link href={`https://hub.docker.com/repository/docker/${hubData.user}/${hubData.name}`}>
+              <Link href={`https://hub.docker.com/repository/docker/${hubData.user}/${hubData.name}`} target="_blank">
                 <Button>
                   <Container width={16} height={16} className="mr-4" />
                   Go to Docker hub
