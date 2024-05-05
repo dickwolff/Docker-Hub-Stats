@@ -51,15 +51,15 @@ export default async function Home() {
 
           <Card className="mb-4 w-full md:w-1/2 lg:w-1/3">
             <CardContent className="mt-6">
-              <div className="grid grid-cols-4">
-                <div className="col-span-2 md:col-span-1">User:</div>
-                <div className="col-span-2 md:col-span-3">{hubData.user}</div>
-                <div className="col-span-2 md:col-span-1">Pulls:</div>
-                <div className="col-span-2 md:col-span-3">{hubData.pullCount}</div>
-                <div className="col-span-2 md:col-span-1">Stars:</div>
-                <div className="col-span-2 md:col-span-3">{hubData.starCount}</div>
-                <div className="col-span-2 md:col-span-1">Last updated:</div>
-                <div className="col-span-2 md:col-span-3">{hubData.lastUpdated.toLocaleDateString()}</div>
+              <div className="grid grid-cols-6">
+                <div className="col-span-3 md:col-span-2">User:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.user}</div>
+                <div className="col-span-3 md:col-span-2">Pulls:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.pullCount}</div>
+                <div className="col-span-3 md:col-span-2">Stars:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.starCount}</div>
+                <div className="col-span-3 md:col-span-2">Last updated:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.lastUpdated.toLocaleDateString()}</div>
               </div>
             </CardContent>
             <CardFooter>
