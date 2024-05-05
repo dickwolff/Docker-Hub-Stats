@@ -44,7 +44,7 @@ export default async function Home() {
 
       <div className="w-full p-4 flex-row">
 
-        <div className="container flex flex-col sm:flex-row justify-center items-start max-w-screen-xl gap-2">
+        <div className="container p-4 flex flex-col sm:flex-row justify-center items-start max-w-screen-xl gap-4">
 
           <Card className="mb-4 w-full md:w-1/2 lg:w-1/3">
             <CardContent className="mt-6">
