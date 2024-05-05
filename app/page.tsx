@@ -51,14 +51,14 @@ export default async function Home() {
 
           <Card className="mb-4 w-full md:w-1/2 lg:w-1/3">
             <CardContent className="mt-6">
-              <div className="grid grid-cols-3">
-                <div className="col-span-2">User:</div>
+              <div className="grid grid-cols-4">
+                <div className="col-span-2 md:col-span-3">User:</div>
                 <div>{hubData.user}</div>
-                <div className="col-span-2">Pulls:</div>
+                <div className="col-span-2 md:col-span-3">Pulls:</div>
                 <div>{hubData.pullCount}</div>
-                <div className="col-span-2">Stars:</div>
+                <div className="col-span-2 md:col-span-3">Stars:</div>
                 <div>{hubData.starCount}</div>
-                <div className="col-span-2">Last updated:</div>
+                <div className="col-span-2 md:col-span-3">Last updated:</div>
                 <div>{hubData.lastUpdated.toLocaleDateString()}</div>
               </div>
             </CardContent>
