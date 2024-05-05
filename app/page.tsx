@@ -37,7 +37,7 @@ export default async function Home() {
     <div className="w-full flex justify-center flex-col">
 
       <header className="flex w-full">
-        <div className="container flex h-14 max-w-screen-2xl items-center frow">
+        <div className="container flex h-14 max-w-screen-xl items-center frow">
           <Link href="/" className="space-x-2 flex text-xl">
             {process.env.APP_NAME}
           </Link>
@@ -47,9 +47,9 @@ export default async function Home() {
 
       <div className="w-full p-4 flex-row">
 
-        <div className="flex flex-col sm:flex-row justify-center max-w-screen-2xl">
+        <div className="container flex flex-col sm:flex-row justify-center items-start max-w-screen-xl gap-2">
 
-          <Card className="mb-4">
+          <Card className="mb-4 md:w-1/3">
             <CardContent className="mt-6">
               <div className="grid grid-cols-3">
                 <div className="col-span-2">User:</div>
@@ -72,7 +72,7 @@ export default async function Home() {
             </CardFooter>
           </Card>
 
-          <div className="flex flex-row p-2 justify-center">
+          <div className="flex flex-row p-2 justify-center md:w-2/3 ">
             <Suspense fallback={<Loader2 className="w-6 h-6 animate-spin" />}>
               <ChartComponent params={pullsChartParams} />
             </Suspense>
