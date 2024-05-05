@@ -18,7 +18,7 @@ export const revalidate = 0;
 export default async function Home() {
 
   const hubData = await getHubData();
-  const pullData = await getPullData();
+  const pullData = await getPullData(hubData.pullCount);
 
   const pullsChartParams = {
     chartName: "Total pulls",
