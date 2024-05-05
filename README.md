@@ -3,7 +3,7 @@
 [![Github-sponsors](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/dickwolff) &nbsp;
 [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/dickw0lff)
 
-A simple webapp that pulls statistics from Docker Hub every night.
+A simple webapp that pulls statistics from Docker Hub every night. Currently it only stores the `pull_count` for each date.
 
 ## Tech stack
 
