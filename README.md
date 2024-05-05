@@ -5,6 +5,8 @@
 
 A simple webapp that pulls statistics from Docker Hub every night.
 
+Currently it only stores the `pull_count` for each date. Please note that the app cannot get historical data from Docker Hub. It will create its own history from the first time the cron job runs.
+ 
 ## Tech stack
 
 - [Next.js](https://nextjs.org/) for the webapp/api
@@ -22,7 +24,7 @@ A simple webapp that pulls statistics from Docker Hub every night.
 2. Go to Vercel and click on 'Add new project' and import the repository from Git
 3. Enter the ENV variables listed in the table below
 4. After creating your project, go to 'Storage' and click 'Create Database' (use Postgres)
-5. Redeploy the app from Vercel (as the newly added environment variables aren't propagated yet)
+5. Redeploy the app from Vercel (as the newly added Postgres environment variables aren't propagated yet)
 
 ### Variables
 | Variable | Description | Required (y/n) |

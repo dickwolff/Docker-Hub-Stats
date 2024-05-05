@@ -20,9 +20,9 @@ interface ChartComponentOptions {
 }
 
 export default function ChartComponent({ params }: { params: ChartComponentOptions }) {
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
 
-    const isDarkTheme = theme === "dark";
+    const isDarkTheme = resolvedTheme === "dark";
     const lightLineColors = ["#008ffb", "#00e396"];
     const darkLineColors = ["#0a3791", "#0a7041"];
 

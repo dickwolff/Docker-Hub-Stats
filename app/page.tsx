@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ModeToggle } from "@/components/togglemode";
 import { Menu } from "@/components/menu";
-// import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
-
 
 export const revalidate = 0;
 
@@ -51,22 +49,22 @@ export default async function Home() {
 
           <Card className="mb-4 w-full md:w-1/2 lg:w-1/3">
             <CardContent className="mt-6">
-              <div className="grid grid-cols-3">
-                <div className="col-span-2">User:</div>
-                <div>{hubData.user}</div>
-                <div className="col-span-2">Pulls:</div>
-                <div>{hubData.pullCount}</div>
-                <div className="col-span-2">Stars:</div>
-                <div>{hubData.starCount}</div>
-                <div className="col-span-2">Last updated:</div>
-                <div>{hubData.lastUpdated.toLocaleDateString()}</div>
+              <div className="grid grid-cols-6">
+                <div className="col-span-3 md:col-span-2">User:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.user}</div>
+                <div className="col-span-3 md:col-span-2">Pulls:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.pullCount}</div>
+                <div className="col-span-3 md:col-span-2">Stars:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.starCount}</div>
+                <div className="col-span-3 md:col-span-2">Last updated:</div>
+                <div className="col-span-3 md:col-span-4">{hubData.lastUpdated.toLocaleDateString()}</div>
               </div>
             </CardContent>
             <CardFooter>
-              <Link href={`https://hub.docker.com/repository/docker/${hubData.user}/${hubData.name}`} target="_blank">
+              <Link href={`https://hub.docker.com/r/${hubData.user}/${hubData.name}`} target="_blank">
                 <Button>
                   <Container width={16} height={16} className="mr-3" />
-                  Go to Docker hub
+                  Go to Docker Hub
                 </Button>
               </Link>
             </CardFooter>
