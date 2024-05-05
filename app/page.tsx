@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ModeToggle } from "@/components/togglemode";
 import { Menu } from "@/components/menu";
-// import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
-
 
 export const revalidate = 0;
 
@@ -63,10 +61,10 @@ export default async function Home() {
               </div>
             </CardContent>
             <CardFooter>
-              <Link href={`https://hub.docker.com/repository/docker/${hubData.user}/${hubData.name}`} target="_blank">
+              <Link href={`https://hub.docker.com/r/${hubData.user}/${hubData.name}`} target="_blank">
                 <Button>
                   <Container width={16} height={16} className="mr-3" />
-                  Go to Docker hub
+                  Go to Docker Hub
                 </Button>
               </Link>
             </CardFooter>
