@@ -14,7 +14,7 @@ A simple webapp that pulls statistics from Docker Hub every night.
 
 ### One click deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdickwolff%2FDocker-Pull-Stats&env=CRON_SECRET,DOCKER_ENDPOINT,APP_NAME&project-name=docker-pull-stats)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdickwolff%2FDocker-Pull-Stats&env=CRON_SECRET,DOCKER_ENDPOINT,APP_NAME&project-name=docker-pull-stats&stores=%5B%7B%22type%22%3A%22postgres%22%7D%5D&)
 
 ### Manual deployment
 
