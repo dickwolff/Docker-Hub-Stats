@@ -1,4 +1,3 @@
-import "moment/locale/nl";
 import moment from 'moment';
 import prismadb from '@/lib/prismadb';
 import type { NextRequest } from 'next/server';
@@ -46,7 +45,7 @@ export async function GET(request: NextRequest) {
         const bot = new TelegramBot(telegramBotToken, { polling: false });
         await bot.sendMessage(
             telegramChatId,
-            `${moment().format("dddd D MMMM YYYY")}\n\nVandaag: ${newData.pullsToday}\nTotaal: ${newData.pullsTotal}\n\n[Ga naar statistieken](https://export-to-ghostfolio-stats.vercel.app)`,
+            `${moment().format("dddd D MMMM YYYY")}\n\Today: ${newData.pullsToday}\nTotal: ${newData.pullsTotal}\n\n[Go to stats](https://export-to-ghostfolio-stats.vercel.app)`,
             { parse_mode: 'MarkdownV2', disable_web_page_preview: true });
     }
 
