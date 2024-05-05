@@ -2,8 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
-import { Suspense } from "react";
-import { Loader2 } from "lucide-react";
 
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -20,7 +18,7 @@ interface ChartComponentOptions {
     };
 }
 
-const ChartComponent = ({ params }: { params: ChartComponentOptions }) => {
+export default function ChartComponent({ params }: { params: ChartComponentOptions }) {
 
     // Retrieve line values.
     const primaryLineValues: any[] = [];
@@ -45,7 +43,7 @@ const ChartComponent = ({ params }: { params: ChartComponentOptions }) => {
             x: {
                 show: false
             },
-            theme: "dark" 
+            theme: "dark"
         },
         fill: {
             type: "gradient",
@@ -113,15 +111,11 @@ const ChartComponent = ({ params }: { params: ChartComponentOptions }) => {
 
     return (
         <div className="w-full">
-            <Suspense fallback={<Loader2 className="w-6 h-6 animate-spin" />}>
-                <div>
-                    <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-slate-200 pb-2">{params.chartValue}</h5>
-                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">{params.chartName}</p>
-                </div>
-                <ApexCharts type="area" options={option} series={series} />
-            </Suspense>
+            <div>
+                <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-slate-200 pb-2">{params.chartValue}</h5>
+                <p className="text-base font-normal text-gray-500 dark:text-gray-400">{params.chartName}</p>
+            </div>
+            <ApexCharts type="area" options={option} series={series} />
         </div>
     )
 };
-
-export default ChartComponent;
