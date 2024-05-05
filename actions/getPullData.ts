@@ -39,7 +39,6 @@ function insertLivePullCount(pullData: PullData[], totalPullCountToday: number):
 
     // Calculate the difference between yesterday and today.
     const previousDayIndex = pullDataTodayIndex > 0 ? pullDataTodayIndex - 1 : 0;
-    console.log(pullData[previousDayIndex])
     pullData[pullDataTodayIndex].pullsToday = totalPullCountToday - pullData[previousDayIndex].pullsTotal;
 
     return pullData;
