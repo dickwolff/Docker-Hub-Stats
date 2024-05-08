@@ -14,7 +14,7 @@ Currently it only stores the `pull_count` for each date. Please note that the ap
 
 ## How to deploy
 
-### One click deploy
+### One click deploy via Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdickwolff%2FDocker-Pull-Stats&env=CRON_SECRET,DOCKER_ENDPOINT,APP_NAME&project-name=docker-pull-stats&stores=%5B%7B%22type%22%3A%22postgres%22%7D%5D&)
 
@@ -32,5 +32,7 @@ Currently it only stores the `pull_count` for each date. Please note that the ap
 | APP_NAME | Your app name | Yes            |
 | DOCKER_ENDPOINT | Docker Hub API endpoint, eg. `https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio` | Yes |
 | CRON_SECRET | Enter a secret of your own, used to safely run the CRON job | Yes |
-| TELEGRAM_BOT_TOKEN | Telegram Bot token, if you want nighly updates in Telegram | No |
+| TELEGRAM_BOT_TOKEN[^1] | Telegram Bot token, if you want nighly updates in Telegram | No |
 | TELEGRAM_BOT_CHAT_ID | Telegram chat id, if you want nighly updates in Telegram | No |
+
+[^1]: Use the [Telegram bot instructions](https://core.telegram.org/bots/tutorial) to obtain the Telegram token and chatId.
