@@ -32,7 +32,7 @@ Currently it only stores the `pull_count` for each date. Please note that the ap
 | APP_NAME | Your app name | Yes            |
 | DOCKER_ENDPOINT | Docker Hub API endpoint, eg. `https://hub.docker.com/v2/repositories/dickwolff/export-to-ghostfolio` | Yes |
 | CRON_SECRET | Enter a secret of your own, used to safely run the CRON job | Yes |
-| TELEGRAM_BOT_TOKEN[^1] | Telegram Bot token, if you want nighly updates in Telegram | No |
-| TELEGRAM_BOT_CHAT_ID | Telegram chat id, if you want nighly updates in Telegram | No |
+| TELEGRAM_BOT_TOKEN[^1] | Telegram Bot token, if you want nightly updates in Telegram | No |
+| TELEGRAM_BOT_CHAT_ID | Telegram chat id, if you want nightly updates in Telegram | No |
 
 [^1]: Use the [Telegram bot instructions](https://core.telegram.org/bots/tutorial) to obtain the Telegram token and chatId.
