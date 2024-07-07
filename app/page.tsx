@@ -25,7 +25,7 @@ export default async function Home() {
       data: pullData[1]
     },
     secondarySeries: {
-      tooltipText: "Unique",
+      tooltipText: "This day",
       data: pullData[2]
     }
   };
