@@ -39,7 +39,14 @@ export default function ChartComponent({ params }: { params: ChartComponentOptio
             height: "100%",
             width: "100%",
             toolbar: {
-                show: false
+                show: true,
+                tools: {                    
+                    selection: true,
+                    pan: false,
+                    zoomin: false,
+                    zoomout: false,                    
+                    download: false
+                }
             },
             background: isDarkTheme ? "#020817" : "#fff"
         },

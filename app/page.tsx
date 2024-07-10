@@ -4,7 +4,7 @@ import { Container, Loader2 } from "lucide-react";
 
 import { Menu } from "@/components/menu";
 import { Button } from "@/components/ui/button";
-import ChartComponent from "@/components/ChartComponent";
+import ChartComponent from "@/components/chartComponent";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 import { getHubData } from "@/actions/getHubData";
