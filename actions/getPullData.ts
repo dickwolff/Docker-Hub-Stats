@@ -21,19 +21,22 @@ export async function getPullData(totalPullCountToday?: number): Promise<[number
 function insertLivePullCount(pullData: PullData[], totalPullCountToday: number): PullData[] {
 
     // Look if there is a value for today. If so, overwrite the total pull count by the given value.
-    const pullDataTodayIndex = pullData.findIndex(pd => moment(pd.date).format("YYYY-MM-DD") == moment(new Date()).format("YYYY-MM-DD"));
+    let pullDataTodayIndex = pullData.findIndex(pd => moment(pd.date).format("YYYY-MM-DD") == moment(new Date()).format("YYYY-MM-DD"));
     if (pullDataTodayIndex >= 0) {
         pullData[pullDataTodayIndex].pullsTotal = totalPullCountToday!;
     }
     else {
 
-        // Add a new entry for today
+        // Add a new entry for today.
         pullData.push({
             date: new Date(),
             pullsToday: 0,
             pullsTotal: totalPullCountToday,
             id: moment().date().toString()
         });
+
+        // Also set the index to the last index (which was just added).
+        pullDataTodayIndex = pullData.length - 1;
     }
 
     // Calculate the difference between yesterday and today.
