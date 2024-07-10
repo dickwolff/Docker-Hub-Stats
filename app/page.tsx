@@ -25,7 +25,7 @@ export default async function Home() {
       data: pullData[1]
     },
     secondarySeries: {
-      tooltipText: "This day",
+      tooltipText: "Today",
       data: pullData[2]
     }
   };
@@ -80,6 +80,4 @@ export default async function Home() {
       </div>
     </div >
   );
-
-
 }
