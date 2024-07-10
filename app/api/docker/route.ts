@@ -29,7 +29,8 @@ export async function GET(request: NextRequest) {
     // Add todays pull count.
     const newData = {
         pullsToday: dockerData.pull_count - lastTotalPullCount,
-        pullsTotal: dockerData.pull_count
+        pullsTotal: dockerData.pull_count,
+        date: moment().subtract(1, "day").toDate()
     }
 
     // Add entry to database.
@@ -45,7 +46,7 @@ export async function GET(request: NextRequest) {
         const bot = new TelegramBot(telegramBotToken, { polling: false });
         await bot.sendMessage(
             telegramChatId,
-            `${moment().format("dddd D MMMM YYYY")}\n\Today: ${newData.pullsToday}\nTotal: ${newData.pullsTotal}\n\n[Go to stats](https://export-to-ghostfolio-stats.vercel.app)`,
+            `${moment(newData.date).format("dddd D MMMM YYYY")}\n\Today: ${newData.pullsToday}\nTotal: ${newData.pullsTotal}\n\n[Go to stats](https://export-to-ghostfolio-stats.vercel.app)`,
             { parse_mode: 'MarkdownV2', disable_web_page_preview: true });
     }
 

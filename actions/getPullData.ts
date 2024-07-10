@@ -15,7 +15,6 @@ export async function getPullData(totalPullCountToday?: number): Promise<[number
     const pullsAccumulated = getAccumulatedPulls(pullData);
     const pullsUnique = getUniquePulls(pullData);
 
-
     return [totalPullCount, pullsAccumulated, pullsUnique]
 }
 
