@@ -1,12 +1,14 @@
-import moment from 'moment';
-import prismadb from '@/lib/prismadb';
-import type { NextRequest } from 'next/server';
-import TelegramBot from 'node-telegram-bot-api';
+import moment from "moment";
+import type { NextRequest } from "next/server";
+
+import TelegramBot from "node-telegram-bot-api";
+
+import prismadb from "@/lib/prismadb";
 
 export async function GET(request: NextRequest) {
-    const authHeader = request.headers.get('authorization');
+    const authHeader = request.headers.get("authorization");
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-        return new Response('Unauthorized', {
+        return new Response("Unauthorized", {
             status: 401,
         });
     }
@@ -18,19 +20,22 @@ export async function GET(request: NextRequest) {
     // Get the last entry for known pull data (so yesterday).
     const lastEntries = await prismadb.pullData.findMany({
         orderBy: {
-            date: 'desc',
+            date: "desc",
         },
         take: 1
     });
 
     // Get the pull count (or 0 if none present).
     var lastTotalPullCount = lastEntries.length === 0 ? 0 : lastEntries[0].pullsTotal;
+    var lastTotalStarCount = lastEntries.length === 0 ? 0 : lastEntries[0].starsTotal;
 
     // Add todays pull count.
     const newData = {
+        date: moment().subtract(1, "day").toDate(),
         pullsToday: dockerData.pull_count - lastTotalPullCount,
         pullsTotal: dockerData.pull_count,
-        date: moment().subtract(1, "day").toDate()
+        starsToday: dockerData.star_count - lastTotalStarCount,
+        starsTotal: dockerData.star_count
     }
 
     // Add entry to database.
@@ -47,7 +52,7 @@ export async function GET(request: NextRequest) {
         await bot.sendMessage(
             telegramChatId,
             `${moment(newData.date).format("dddd D MMMM YYYY")}\n\Today: ${newData.pullsToday}\nTotal: ${newData.pullsTotal}\n\n[Go to stats](https://export-to-ghostfolio-stats.vercel.app)`,
-            { parse_mode: 'MarkdownV2', disable_web_page_preview: true });
+            { parse_mode: "MarkdownV2", disable_web_page_preview: true });
     }
 
     // Return 200 with new pull data.

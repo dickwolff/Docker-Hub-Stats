@@ -32,7 +32,9 @@ function insertLivePullCount(pullData: PullData[], totalPullCountToday: number):
             date: new Date(),
             pullsToday: 0,
             pullsTotal: totalPullCountToday,
-            id: moment().date().toString()
+            id: moment().date().toString(),
+            starsToday: 0,
+            starsTotal: 0 
         });
 
         // Also set the index to the last index (which was just added).

@@ -9,15 +9,17 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model PullData {
   id String @id @default(uuid())
 
-  date DateTime @default(now())
+  date       DateTime @default(now())
   pullsToday Int
   pullsTotal Int
+  starsToday Int
+  starsTotal Int
 }
