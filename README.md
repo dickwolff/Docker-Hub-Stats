@@ -5,7 +5,7 @@
 
 A simple webapp that pulls statistics from Docker Hub every night.
 
-Currently it only stores the `pull_count` for each date. Please note that the app cannot get historical data from Docker Hub. It will create its own history from the first time the cron job runs.
+Currently it stores the `pull_count` and `star_count` for each date. Please note that the app cannot get historical data from Docker Hub. It will create its own history from the first time the cron job runs.
  
 ## Tech stack
 
