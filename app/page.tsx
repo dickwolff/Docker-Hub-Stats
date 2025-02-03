@@ -34,7 +34,7 @@ export default async function Home() {
     <div className="w-full flex justify-center flex-col">
 
       <header className="flex w-full">
-        <div className="container flex h-20 max-w-screen-xl items-center frow">
+        <div className="container flex h-20 max-w-(--breakpoint-xl) items-center frow">
           <Link href="/" className="space-x-2 flex text-xl">
             {process.env.APP_NAME}
           </Link>
@@ -44,7 +44,7 @@ export default async function Home() {
 
       <div className="w-full p-4 flex-row">
 
-        <div className="container p-4 flex flex-col sm:flex-row justify-center items-start max-w-screen-xl gap-4">
+        <div className="container p-4 flex flex-col sm:flex-row justify-center items-start max-w-(--breakpoint-xl) gap-4">
 
           <Card className="mb-4 w-full md:w-1/2 lg:w-1/3">
             <CardContent className="mt-6">
