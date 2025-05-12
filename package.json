@@ -31,13 +31,13 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.5",
+    "@tailwindcss/postcss": "^4.1.6",
     "@types/node": "^22",
     "@types/node-telegram-bot-api": "^0.64.8",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^8",
-    "eslint-config-next": "15.3.1",
+    "eslint-config-next": "15.3.2",
     "postcss": "^8",
     "prisma": "^6.7.0",
     "tailwindcss": "^4.0.0",
