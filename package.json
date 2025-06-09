@@ -33,13 +33,13 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",
     "@types/node": "^22",
-    "@types/node-telegram-bot-api": "^0.64.8",
+    "@types/node-telegram-bot-api": "^0.64.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^8",
     "eslint-config-next": "15.3.3",
     "postcss": "^8",
-    "prisma": "^6.8.2",
+    "prisma": "^6.9.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
   }
