@@ -31,7 +31,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^24",
     "@types/node-telegram-bot-api": "^0.64.9",
     "@types/react": "^19",
